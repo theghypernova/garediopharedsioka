@@ -1,4 +1,4 @@
-name: 007-of-one Docker Cycle (with IP Gate) (01:30 PM IST)
+name: 006-of-one Docker Cycle (with IP Gate) (01:30 PM IST)
 on:
   schedule:
     # 08:00 UTC = 13:30 IST
