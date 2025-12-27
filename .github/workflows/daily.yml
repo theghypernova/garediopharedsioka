@@ -1,5 +1,4 @@
 name: 007-of-two Docker Cycle (with IP Gate) (09:30 PM IST)
-
 on:
   schedule:
     # 16:00 UTC = 21:30 IST
@@ -150,21 +149,19 @@ jobs:
       - name: Run cyclic Docker script
         if: env.SHOULD_RUN == 'true'
         env:
-          PROJECT_NAME: '007-of-two'
+          PROJECT_NAME: '007-of-three'
           SESSION_COPY_DELAY: 5700 # Wait 95 minutes before copying sessions
-          ENABLE_SESSION_UPLOAD: 'false' # Set to 'false' to disable artifact upload
-          ENABLE_ARTIFACT_UPLOAD: 'false' # Upload as Build Artifact
+          ENABLE_SESSION_UPLOAD: 'true' # Set to 'false' to disable artifact upload
+          ENABLE_ARTIFACT_UPLOAD: 'true' # Upload as Build Artifact
           ENABLE_RELEASE_UPLOAD: 'false' # Upload to GitHub Release
-          ENABLE_SESSION_RESTORE: 'true' # Set to 'true' to enable session restore (and disable upload)
+          ENABLE_SESSION_RESTORE: 'false' # Set to 'true' to enable session restore (and disable upload)
           SESSION_RESTORE_URL_ONE: ${{ secrets.SESSION_RESTORE_URL_ONE }}
           SESSION_RESTORE_URL_TWO: ${{ secrets.SESSION_RESTORE_URL_TWO }}
           SESSION_RESTORE_URL_THREE: ${{ secrets.SESSION_RESTORE_URL_THREE }}
           ACCOUNT_1: ${{ secrets.ACCOUNT_1 }}
           ACCOUNT_2: ${{ secrets.ACCOUNT_2 }}
           ACCOUNT_3: ${{ secrets.ACCOUNT_3 }}
-          ARTIFACT_NAME_CUSTOM: ${{ secrets.ARTIFACT_NAME_CUSTOM }}
-          TARGET_SCRIPT_URL: ${{ env.TARGET_SCRIPT_URL }}
-          TARGET_RESTORE_URL: ${{ env.TARGET_RESTORE_URL }}
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
         run: ./script.sh
 
       - name: Upload Sessions Artifact
